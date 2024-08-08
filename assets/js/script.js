@@ -53,7 +53,17 @@ function displayQuestion() {
     var question = document.createElement("h2");
     question.textContent = currentQuestion.ques;
     gameDiv.appendChild(question);
+
     displayQuestionChoices();
+    
+    if (currentQuestion.image) {
+        var img = document.createElement("img");
+        img.src = currentQuestion.image;
+        img.alt = "Question image";
+        img.style.width = "30%"; 
+        gameDiv.appendChild(img);
+    }
+    //displayQuestionChoices();
 }
 
 function displayQuestionChoices() {
