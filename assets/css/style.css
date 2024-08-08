@@ -1,0 +1,68 @@
+#pa {
+    margin:auto;
+}
+
+.choiceBG {
+    background-color: beige;
+    width: 400px;
+    height: 50px;
+    padding-top: 10px;
+    margin:auto;
+    margin-bottom: 10px;
+    
+}
+
+.choiceBG :hover{
+    background-color: beige;
+}
+
+.homePage {
+    background-color: aquamarine;
+    height: 300px;
+    padding-top: 70px;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+#startGame {
+    background-color: blueviolet;
+    color: cornsilk;
+}
+
+.userinfo {
+    background-color: hotpink;
+    padding: 0vw 30vw;
+    text-align: center;
+}
+
+#userSubmit {
+    background-color:blue;
+    color: mintcream;
+    border-radius: 20%;
+    margin: 10px auto;
+}
+
+#inputlabel {
+    font-weight: bold;
+    font-size: 36px;
+    color: rebeccapurple;
+    font-style: italic;
+}
+
+#userName {
+    margin: 0 auto;
+}
+
+#pa {
+    position: absolute;
+    top: 20vw;
+    left: 43vw;
+}
+
+#cb {
+    position: absolute;
+    top: 20vw;
+    left: 52vw;
+}

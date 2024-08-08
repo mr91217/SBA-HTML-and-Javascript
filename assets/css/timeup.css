@@ -1,0 +1,19 @@
+.timeup {
+    background-color: pink;
+    padding: 10vw 30vw;
+    color: red;
+    font-size: 50px;
+}
+
+#bb {
+    background-color:lightskyblue;
+    font-size: 40px;
+    border-radius: 10%;
+    color: white;
+}
+
+#cc {
+    position: absolute;
+    top: 20vw;
+    left: 43vw;
+}
