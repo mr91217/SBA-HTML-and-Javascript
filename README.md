@@ -3,6 +3,10 @@
 ## Purpose
 * Practice JavaScript + HTML
 
+## Screenshot
+![SBA-HTML-and-Javascript](./img/Screenshot%202024-08-07%20at%2021.27.03.png)
+
+
 ## Built With
 * HTML
 * CSS
