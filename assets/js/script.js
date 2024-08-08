@@ -55,7 +55,7 @@ function displayQuestion() {
     gameDiv.appendChild(question);
 
     displayQuestionChoices();
-    
+
     if (currentQuestion.image) {
         var img = document.createElement("img");
         img.src = currentQuestion.image;
@@ -99,6 +99,7 @@ gameDiv.addEventListener("click", function (e) {
       if (counter === numOfQuestions) {
           showStats();
           othername();
+          hidetimer();
           
       } else {
           displayQuestion();
