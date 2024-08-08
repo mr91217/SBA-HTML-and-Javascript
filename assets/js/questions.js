@@ -15,13 +15,13 @@ var questions = [
         ques: "what is the color of a black DOG?",
         choices: ["black", "yellow" ,"white"],
         answer: "black",
-        image: "./img/IMG_dog.png"
+        image: "./img/IMG_dog.PNG"
     },
     {
         ques: "How many feet do two cats have?",
         choices: ["10", "6" ,"8"],
         answer: "8",
-        image: "./img/IMG_four.jpg"
+        image: "./img/IMG_four.JPG"
     },
     {
         ques: "what kind of food may a cat like?",
