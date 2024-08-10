@@ -116,6 +116,24 @@ gameDiv.addEventListener("click", function (e) {
     
 };
 
+// function highScore() {
+//     playerSubmit.style.display = "none";
+//     playerName.style.display = "none";
+//     score.style.display = "block";
+//     scoreName.style.display = "block";
+//     playAgainBtn.style.display = "block";
+//     CB.style.display = "block";
+//     finalStats.style.display = "none";
+//     inputLabel.style.display = "none";
+//     var input = document.getElementById("userName").value;
+    
+//     localStorage.setItem("Highscore", correctAnswers);
+//     localStorage.setItem("name", input);
+//     scoreName.innerHTML = "";
+//     var h3 = document.createElement(h3);
+//     h3.textContent = "1." + input + "---" + correctAnswers;
+//     scoreName.appendChild(h3);
+// }
 function highScore() {
     playerSubmit.style.display = "none";
     playerName.style.display = "none";
@@ -126,13 +144,18 @@ function highScore() {
     finalStats.style.display = "none";
     inputLabel.style.display = "none";
     var input = document.getElementById("userName").value;
-    
-    localStorage.setItem("Highscore", correctAnswers);
-    localStorage.setItem("name", input);
-    scoreName.innerHTML = "";
-    var h3 = document.createElement(h3);
-    h3.textContent = "1." + input + "---" + correctAnswers;
-    scoreName.appendChild(h3);
+
+    // 打印 LocalStorage 中的数据
+    console.log("Before saving:", JSON.parse(localStorage.getItem("datakey")));
+
+    var storedScores = JSON.parse(localStorage.getItem("datakey")) || [];
+    storedScores.push({name: input, score: correctAnswers});
+    localStorage.setItem("datakey", JSON.stringify(storedScores));
+
+    // 再次打印保存后的数据
+    console.log("After saving:", storedScores);
+
+    displayScores(storedScores);
 }
 
   function showStats() {
@@ -150,22 +173,78 @@ function highScore() {
 
   function clearscore() {
       localStorage.clear();
-      document.getElementById("scoreList").innerHTML = "-------";
+      //document.getElementById("scoreList").innerHTML = "-------";
+      scoreName.innerHTML = "-------";
     }
   var user_score_list = [];
-  function guardarNumeros() {
-        boxvalue = document.getElementById("userName").value;
-        user_score_list.push(boxvalue);
-        user_score_list.push(correctAnswers);
-        console.log(user_score_list);
-        localStorage.setItem("datakey", JSON.stringify(user_score_list));
-        var h3 = document.createElement(h3);
+//   function guardarNumeros() {
+//         boxvalue = document.getElementById("userName").value;
+//         user_score_list.push(boxvalue);
+//         user_score_list.push(correctAnswers);
+//         console.log(user_score_list);
+//         localStorage.setItem("datakey", JSON.stringify(user_score_list));
+//         var h3 = document.createElement(h3);
 
-        h3.textContent = user_score_list[0] + " --- " + user_score_list[1];
-        scoreName.appendChild(h3);
+//         h3.textContent = user_score_list[0] + " --- " + user_score_list[1];
+//         scoreName.appendChild(h3);
         
 
+//     }
+function guardarNumeros() {
+    var boxvalue = document.getElementById("userName").value;
+    var storedScores = JSON.parse(localStorage.getItem("datakey")) || [];
+
+    // 将当前得分和用户名推入到数组中
+    storedScores.push({name: boxvalue, score: correctAnswers});
+    
+    // 更新 LocalStorage
+    localStorage.setItem("datakey", JSON.stringify(storedScores));
+
+    // 显示更新后的分数列表
+    displayScores(storedScores);
+}
+function displayScores(storedScores) {
+    var scoreList = document.getElementById("scoreList");
+    var scoreTableBody = document.getElementById("scoreTableBody");
+
+    // 确认元素存在
+    if (!scoreTableBody) {
+        console.error("Element with id 'scoreTableBody' not found.");
+        return;
     }
+
+    // 确保表格是可见的
+    scoreList.style.display = "block";
+    scoreTableBody.innerHTML = ""; // 清空之前的内容
+
+    if (storedScores.length === 0) {
+        // 如果没有数据，显示一个默认消息
+        var row = document.createElement("tr");
+        var cell = document.createElement("td");
+        cell.setAttribute("colspan", "3");
+        cell.appendChild(document.createTextNode("No high scores yet."));
+        row.appendChild(cell);
+        scoreTableBody.appendChild(row);
+    } else {
+        storedScores.forEach(function(entry, index) {
+            var row = document.createElement("tr");
+
+            var cell1 = document.createElement("td");
+            cell1.appendChild(document.createTextNode(index + 1));
+            row.appendChild(cell1);
+
+            var cell2 = document.createElement("td");
+            cell2.appendChild(document.createTextNode(entry.name));
+            row.appendChild(cell2);
+
+            var cell3 = document.createElement("td");
+            cell3.appendChild(document.createTextNode(entry.score));
+            row.appendChild(cell3);
+
+            scoreTableBody.appendChild(row);
+        });
+    }
+}
 
   playAgainBtn.addEventListener("click", function(e){
       e.preventDefault();

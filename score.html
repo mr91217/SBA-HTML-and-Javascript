@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Score</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/timeup.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 </head>
 <body>
     <div id="start" class="homePage text-center" style="display: none;">
@@ -24,13 +26,26 @@
         <form action="index.html">
             <button id="cc" class="btn btn-group-lg btn-primary" style="display: block;">go back</button>
         </form>
-        <button id="pa" class="btn btn-group-lg btn-primary" style="display: none;">go back</button>
-        <button id="cb" class="btn btn-group-lg btn-primary" style="display: block;">clear</button>
+        
         <h2 id="quesPosition" style="display: block;"></h2>
 
         <div id="game" style="display: block;"></div>
-        <h2 id="scoreTitle" style="display: block;">High Scores</h2>
-        <h3 id="scoreList" style="display: block;"></h3>
+        <h2 id="scoreTitle" class="high-scores-title" style="display: block;">High Scores</h2>
+        <!-- <h3 id="scoreList" style="display: block;"></h3> -->
+        <div id="scoreList" style="display: block;">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreTableBody">
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
     
     <div class="userinfo" style="display: none;">
@@ -42,6 +57,9 @@
     </div>
     <div>
         <h4 id="countdown_text"></h4>
+        <button id="pa" class="btn btn-group-lg btn-primary" style="display: none;">go back</button>
+        <button id="cb" class="btn btn-group-lg btn-primary" style="display: none;">clear</button>
+        
     </div>
 
 
@@ -49,7 +67,13 @@
 
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/score.js"></script>
+    <!-- <script src="./assets/js/score.js"></script> -->
+    <script>
+        window.onload = function() {
+            var storedScores = JSON.parse(localStorage.getItem("datakey")) || [];
+            displayScores(storedScores);
+        };
+    </script>
 
 </body>
 </html>
